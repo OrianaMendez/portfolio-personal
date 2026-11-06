@@ -31,6 +31,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
     setTheme(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    document.documentElement.style.colorScheme = initialTheme;
 
     if (savedLang === "en" || savedLang === "es") {
       setLangState(savedLang);
@@ -59,6 +60,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setTheme(next);
     localStorage.setItem("portfolio-theme", next);
     document.documentElement.classList.toggle("dark", next === "dark");
+    document.documentElement.style.colorScheme = next;
   };
 
   const setLang = (nextLang: Language) => {

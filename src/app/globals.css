@@ -3,6 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  color-scheme: light;
   /* Light mode: Soft pearl/alabaster canvas so pure white elevated cards pop with 3D depth */
   --bg-primary: #f6f8fb;
   --bg-card: #ffffff;
@@ -23,7 +24,9 @@
   --accent: var(--accent-light);
 }
 
+html.dark,
 .dark {
+  color-scheme: dark;
   /* Dark mode: exact deep navy from reference with clearly differentiated dark cards */
   --bg-primary: #0b111e;
   --bg-card: #131c2e;

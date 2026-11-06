@@ -25,7 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');var d=(t==='light'||t==='dark')?t:'dark';var el=document.documentElement;if(d==='dark'){el.classList.add('dark');el.style.colorScheme='dark';}else{el.classList.remove('dark');el.style.colorScheme='light';}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
+        suppressHydrationWarning
         className={`${poppins.variable} min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white`}
       >
         {/* Architectural Dot-Grid Canvas for depth in Light & Dark mode */}

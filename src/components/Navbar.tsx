@@ -106,7 +106,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full pt-3 sm:pt-4 px-4 sm:px-6 pointer-events-none">
       <div
-        className={`max-w-4xl mx-auto pointer-events-auto rounded-2xl md:rounded-full px-3.5 sm:px-5 h-13 sm:h-14 flex items-center justify-between gap-4 backdrop-blur-xl bg-white/85 dark:bg-[#111927]/85 border transition-all duration-300 ${
+        className={`max-w-4xl mx-auto pointer-events-auto rounded-full px-3 sm:px-5 h-12 sm:h-14 flex items-center justify-between gap-2 sm:gap-4 backdrop-blur-xl bg-white/90 dark:bg-[#131c2e]/90 border transition-all duration-300 ${
           scrolled
             ? "border-slate-300/90 dark:border-slate-700/80 shadow-[0_8px_30px_rgb(15,23,42,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.45)]"
             : "border-slate-200/80 dark:border-slate-800/80 shadow-xs"
@@ -150,39 +150,50 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Mobile Menu Trigger + Active Section Indicator */}
-        <div className="flex items-center gap-2.5 md:hidden">
+        {/* Mobile Unified Menu Pill (Hamburger + Active Section + Chevron) */}
+        <div className="flex items-center md:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label="Abrir menú de navegación"
-            className="p-2 rounded-full surface-badge text-slate-700 dark:text-slate-200 cursor-pointer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full accent-pill text-[11px] font-bold uppercase tracking-wider cursor-pointer"
           >
             {mobileMenuOpen ? (
               <svg
                 viewBox="0 0 24 24"
-                className="w-4 h-4"
+                className="w-3.5 h-3.5 shrink-0"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.3"
               >
                 <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
               </svg>
             ) : (
               <svg
                 viewBox="0 0 24 24"
-                className="w-4 h-4"
+                className="w-3.5 h-3.5 shrink-0"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.3"
               >
                 <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
               </svg>
             )}
+            <span>{navLinks.find((n) => n.id === activeSection)?.label}</span>
+            <svg
+              viewBox="0 0 24 24"
+              className={`w-3 h-3 shrink-0 transition-transform duration-200 ${
+                mobileMenuOpen ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
           </button>
-          <span className="text-[11px] font-bold uppercase tracking-wider accent-text">
-            {navLinks.find((n) => n.id === activeSection)?.label}
-          </span>
         </div>
 
         {/* Right Controls */}
