@@ -258,13 +258,11 @@ export default function LandingCVPage() {
           <WavyDivider />
         </div>
 
-        {/* Timeline List with 3D Company Cards */}
-        <div className="relative pl-6 sm:pl-8 space-y-6 before:content-[''] before:absolute before:left-[6px] before:top-4 before:bottom-4 before:w-[2px] before:bg-slate-300 dark:before:bg-slate-800">
+        {/* Open Fluid Timeline List (No outer card box) */}
+        <div className="relative pl-6 sm:pl-8 space-y-11 before:content-[''] before:absolute before:left-[6px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-300 dark:before:bg-slate-800">
           {t.experience.items.map((companyGroup, idx) => {
             const hasMultiplePositions = companyGroup.positions.length > 1;
             const SinglePos = companyGroup.positions[0];
-            const summaryDuration =
-              companyGroup.totalDuration || SinglePos.duration;
 
             return (
               <div
@@ -272,116 +270,66 @@ export default function LandingCVPage() {
                 className="relative"
               >
                 {/* Main Timeline Node for the Company */}
-                <span className="absolute -left-6 sm:-left-8 top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full accent-node" />
+                <span className="absolute -left-6 sm:-left-8 top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full accent-node" />
 
-                {/* 3D Surface Card for each Company */}
-                <div className="rounded-xl surface-card p-5 sm:p-6 space-y-5">
-                  {/* Unified Company Header Row */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200/80 dark:border-slate-800/80">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-9 h-9 rounded-lg accent-pill flex items-center justify-center shrink-0">
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="w-4 h-4 accent-text"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                {hasMultiplePositions ? (
+                  /* LINKEDIN-STYLE GROUPED COMPANY WITH NESTED ROLES */
+                  <div className="space-y-4">
+                    {/* Company Header */}
+                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                      {companyGroup.companyUrl ? (
+                        <a
+                          href={companyGroup.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-base sm:text-[17px] font-bold text-slate-900 dark:text-white uses-link"
                         >
-                          <rect x="2" y="7" width="20" height="14" rx="2" />
-                          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                        </svg>
-                      </div>
-                      <div className="min-w-0">
-                        {companyGroup.companyUrl ? (
-                          <a
-                            href={companyGroup.companyUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-base sm:text-[17px] font-bold text-slate-900 dark:text-white uses-link"
-                          >
-                            <span>{companyGroup.company}</span>
-                            <span className="text-xs accent-text">↗</span>
-                          </a>
-                        ) : (
-                          <h3 className="text-base sm:text-[17px] font-bold text-slate-900 dark:text-white">
-                            {companyGroup.company}
-                          </h3>
-                        )}
-                      </div>
+                          {companyGroup.company}
+                        </a>
+                      ) : (
+                        <h3 className="text-base sm:text-[17px] font-bold text-slate-900 dark:text-white">
+                          {companyGroup.company}
+                        </h3>
+                      )}
+                      {companyGroup.totalDuration && (
+                        <>
+                          <span className="text-slate-400 dark:text-slate-600">
+                            •
+                          </span>
+                          <span className="text-xs font-semibold accent-text">
+                            {companyGroup.totalDuration}
+                          </span>
+                        </>
+                      )}
                     </div>
 
-                    {summaryDuration && (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold accent-pill shrink-0">
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="w-3 h-3 shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                        <span>{summaryDuration}</span>
-                      </span>
-                    )}
-                  </div>
-
-                  {hasMultiplePositions ? (
-                    /* LINKEDIN-STYLE GROUPED ROLES INSIDE THE COMPANY CARD */
-                    <div className="relative pl-6 sm:pl-7 space-y-7 before:content-[''] before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-200 dark:before:bg-slate-800">
+                    {/* Nested Sub-Timeline for each role inside the same company */}
+                    <div className="relative pl-6 sm:pl-7 space-y-8 before:content-[''] before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-300/90 dark:before:bg-slate-700/80">
                       {companyGroup.positions.map((pos, pIdx) => (
-                        <div
-                          key={`${pos.role}-${pIdx}`}
-                          className={`relative ${
-                            pIdx > 0
-                              ? "pt-6 border-t border-slate-100 dark:border-slate-800/50"
-                              : ""
-                          }`}
-                        >
+                        <div key={`${pos.role}-${pIdx}`} className="relative">
                           {/* Sub-node dot */}
                           <span
-                            className={`absolute -left-6 sm:-left-7 ${
-                              pIdx > 0 ? "top-7.5" : "top-1.5"
-                            } h-3 w-3 rounded-full ring-4 ring-white dark:ring-[#131c2e] ${
+                            className={`absolute -left-6 sm:-left-7 top-1.5 h-3 w-3 rounded-full ring-4 ring-[#f6f8fb] dark:ring-[#0b111e] ${
                               pos.current
                                 ? "accent-bg"
-                                : "bg-white dark:bg-[#131c2e] border-2 border-slate-400 dark:border-slate-500"
+                                : "bg-[#f6f8fb] dark:bg-[#0b111e] border-2 border-slate-400 dark:border-slate-500"
                             }`}
                           />
 
-                          {/* Role Title + Metadata Pills */}
-                          <div className="flex flex-wrap items-center justify-between gap-2">
-                            <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
-                              {pos.role}
-                            </h4>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 dark:bg-[#0b111e] text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800">
-                              {pos.employmentType}
-                            </span>
-                          </div>
+                          <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
+                            {pos.role}
+                          </h4>
 
-                          {/* Period & Duration */}
-                          <div className="mt-1 flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-                            <svg
-                              viewBox="0 0 24 24"
-                              className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            >
-                              <rect x="3" y="4" width="18" height="18" rx="2" />
-                              <path d="M16 2v4M8 2v4M3 10h18" />
-                            </svg>
-                            <span>
-                              {pos.period}
-                              {pos.duration ? ` · ${pos.duration}` : ""}
-                            </span>
-                          </div>
+                          <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">
+                            {pos.employmentType}
+                          </p>
 
-                          {/* Bullets */}
-                          <ul className="mt-3 space-y-2 text-xs sm:text-[13.5px] text-slate-700 dark:text-slate-300">
+                          <p className="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+                            {pos.period}
+                            {pos.duration ? ` · ${pos.duration}` : ""}
+                          </p>
+
+                          <ul className="mt-2.5 space-y-1.5 text-xs sm:text-[13.5px] text-slate-700 dark:text-slate-300">
                             {pos.bullets.map((bullet, bIdx) => (
                               <li
                                 key={bIdx}
@@ -396,8 +344,7 @@ export default function LandingCVPage() {
                             ))}
                           </ul>
 
-                          {/* Tech Stack */}
-                          <div className="mt-4 flex flex-wrap items-center gap-1.5">
+                          <div className="mt-3 flex flex-wrap items-center gap-1.5">
                             {pos.technologies.map((tech) => (
                               <SkillBadge
                                 key={tech.name}
@@ -410,60 +357,69 @@ export default function LandingCVPage() {
                         </div>
                       ))}
                     </div>
-                  ) : (
-                    /* SINGLE ROLE INSIDE THE COMPANY CARD */
-                    <div>
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">
-                          {SinglePos.role}
-                        </h4>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-slate-100 dark:bg-[#0b111e] text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-800">
-                          {SinglePos.employmentType}
-                        </span>
-                      </div>
+                  </div>
+                ) : (
+                  /* SINGLE ROLE AT COMPANY */
+                  <div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-slate-900 dark:text-white leading-snug">
+                      {SinglePos.role}
+                    </h3>
 
-                      <div className="mt-1 flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
+                    <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-[13px] text-slate-700 dark:text-slate-200">
+                      {companyGroup.companyUrl ? (
+                        <a
+                          href={companyGroup.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold uses-link"
                         >
-                          <rect x="3" y="4" width="18" height="18" rx="2" />
-                          <path d="M16 2v4M8 2v4M3 10h18" />
-                        </svg>
-                        <span>{SinglePos.period}</span>
-                      </div>
-
-                      <ul className="mt-3 space-y-2 text-xs sm:text-[13.5px] text-slate-700 dark:text-slate-300">
-                        {SinglePos.bullets.map((bullet, bIdx) => (
-                          <li
-                            key={bIdx}
-                            className="flex items-start gap-2.5 leading-relaxed"
-                          >
-                            <span
-                              aria-hidden="true"
-                              className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full accent-bg"
-                            />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex flex-wrap items-center gap-1.5">
-                        {SinglePos.technologies.map((tech) => (
-                          <SkillBadge
-                            key={tech.name}
-                            name={tech.name}
-                            icon={tech.icon}
-                            compact
-                          />
-                        ))}
-                      </div>
+                          {companyGroup.company}
+                        </a>
+                      ) : (
+                        <span className="font-semibold uses-link">
+                          {companyGroup.company}
+                        </span>
+                      )}
+                      <span className="text-slate-400 dark:text-slate-600">
+                        •
+                      </span>
+                      <span className="text-slate-600 dark:text-slate-300">
+                        {SinglePos.employmentType}
+                      </span>
                     </div>
-                  )}
-                </div>
+
+                    <p className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
+                      {SinglePos.period}
+                      {SinglePos.duration ? ` · ${SinglePos.duration}` : ""}
+                    </p>
+
+                    <ul className="mt-3 space-y-1.5 text-xs sm:text-[13.5px] text-slate-700 dark:text-slate-300">
+                      {SinglePos.bullets.map((bullet, bIdx) => (
+                        <li
+                          key={bIdx}
+                          className="flex items-start gap-2.5 leading-relaxed"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full accent-bg"
+                          />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-3.5 flex flex-wrap items-center gap-1.5">
+                      {SinglePos.technologies.map((tech) => (
+                        <SkillBadge
+                          key={tech.name}
+                          name={tech.name}
+                          icon={tech.icon}
+                          compact
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}
