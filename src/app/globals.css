@@ -62,26 +62,26 @@ body {
   z-index: -1;
   pointer-events: none;
   background-image: radial-gradient(
-    rgba(15, 23, 42, 0.24) 1.35px,
-    transparent 1.35px
+    rgba(15, 23, 42, 0.13) 1.15px,
+    transparent 1.15px
   );
   background-size: 22px 22px;
   mask-image: radial-gradient(
-    ellipse 95% 90% at 50% 45%,
-    #000 55%,
+    ellipse 85% 75% at 50% 25%,
+    #000 35%,
     transparent 100%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 95% 90% at 50% 45%,
-    #000 55%,
+    ellipse 85% 75% at 50% 25%,
+    #000 35%,
     transparent 100%
   );
 }
 
 .dark .canvas-backdrop {
   background-image: radial-gradient(
-    rgba(148, 163, 184, 0.22) 1.3px,
-    transparent 1.3px
+    rgba(148, 163, 184, 0.1) 1px,
+    transparent 1px
   );
 }
 
