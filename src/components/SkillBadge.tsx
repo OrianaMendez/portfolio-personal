@@ -32,7 +32,7 @@ export function SkillIcon({ icon }: { icon: string }) {
     case "typescript":
       return (
         <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 shrink-0">
-          <rect x="2" y="2" width="20" height="20" rx="3.5" fill="#3178C6" />
+          <rect x="2" y="2" width="20" height="20" rx="3.5" fill="#1D63B8" />
           <text x="5.5" y="17" fill="#fff" fontSize="9.5" fontWeight="bold" fontFamily="sans-serif">TS</text>
         </svg>
       );
@@ -92,7 +92,7 @@ export function SkillIcon({ icon }: { icon: string }) {
       );
     case "prisma":
       return (
-        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 shrink-0 text-slate-800 dark:text-sky-400" fill="currentColor">
+        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 shrink-0 text-slate-800 dark:text-[var(--accent)]" fill="currentColor">
           <path d="M19.5 16.8L12.7 2.6a1.1 1.1 0 0 0-2-.1L4.4 15.2a1.2 1.2 0 0 0 .3 1.4l5.4 4.8c.5.4 1.2.6 1.8.3l6.9-3a1.2 1.2 0 0 0 .7-1.9zm-7.3 2.5l-1.5-11 6.3 8.9-4.8 2.1z" />
         </svg>
       );
@@ -265,7 +265,7 @@ export function SkillBadge({
   return (
     <span
       className={`inline-flex items-center gap-2 rounded-md surface-badge text-slate-800 dark:text-slate-200 font-medium select-none ${
-        compact ? "px-2.5 py-1 text-[11.5px]" : "px-3 py-1.5 text-xs sm:text-[13px]"
+        compact ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-xs sm:text-[13px]"
       }`}
     >
       <SkillIcon icon={icon} />

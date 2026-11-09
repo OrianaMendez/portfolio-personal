@@ -163,13 +163,11 @@ export const skillsList: SkillItem[] = [
   // Frontend y UI/UX
   { name: "Next.js", icon: "nextjs", category: "frontend" },
   { name: "React", icon: "react", category: "frontend" },
-  { name: "JavaScript", icon: "javascript", category: "frontend" },
   { name: "TypeScript", icon: "typescript", category: "frontend" },
+  { name: "JavaScript", icon: "javascript", category: "frontend" },
   { name: "Tailwind CSS", icon: "tailwind", category: "frontend" },
   { name: "Angular", icon: "angular", category: "frontend" },
   { name: "Vue.js", icon: "vue", category: "frontend" },
-  { name: "HTML5", icon: "html", category: "frontend" },
-  { name: "CSS3", icon: "css", category: "frontend" },
   { name: "Diseño UI / UX", icon: "uiux", category: "frontend" },
   // Backend, Datos y APIs
   { name: "Python", icon: "python", category: "backend" },
@@ -180,19 +178,17 @@ export const skillsList: SkillItem[] = [
   { name: "Redis", icon: "redis", category: "backend" },
   { name: "Celery", icon: "celery", category: "backend" },
   { name: "Django", icon: "django", category: "backend" },
-  { name: "PHP", icon: "php", category: "backend" },
-  { name: "Axios", icon: "axios", category: "backend" },
   { name: "WebSockets", icon: "websockets", category: "backend" },
   { name: "APIs RESTful", icon: "rest", category: "backend" },
   // Cloud, BI, DevOps e IA
+  { name: "OpenAI (Whisper / GPT)", icon: "ai", category: "cloud_ai" },
+  { name: "ElevenLabs API", icon: "elevenlabs", category: "cloud_ai" },
+  { name: "n8n", icon: "n8n", category: "cloud_ai" },
   { name: "AWS (S3 / Cloud)", icon: "aws", category: "cloud_ai" },
   { name: "Amazon QuickSight", icon: "quicksight", category: "cloud_ai" },
   { name: "Docker", icon: "docker", category: "cloud_ai" },
   { name: "Jenkins (CI/CD)", icon: "jenkins", category: "cloud_ai" },
   { name: "Vercel", icon: "vercel", category: "cloud_ai" },
-  { name: "OpenAI (Whisper / GPT)", icon: "ai", category: "cloud_ai" },
-  { name: "n8n", icon: "n8n", category: "cloud_ai" },
-  { name: "ElevenLabs API", icon: "elevenlabs", category: "cloud_ai" },
   { name: "Prompt Engineering", icon: "ai", category: "cloud_ai" },
   { name: "Git y GitHub", icon: "git", category: "cloud_ai" },
 ];
@@ -204,7 +200,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       role: "Front-End Developer y Analista de Datos",
       email: "orianamendez.work@gmail.com",
       linkedinUrl: "https://www.linkedin.com/in/oriana-mendez-ma/",
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/OrianaMendez",
       platziUrl: "https://platzi.com/p/or1ana/",
     },
     nav: {
@@ -214,7 +210,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       projects: "Proyectos",
       certifications: "Certificaciones",
       contact: "Contacto",
-      cmdHint: "Menú",
+      cmdHint: "Comandos (Ctrl+K)",
     },
     hero: {
       availableBadge: "Disponible para proyectos",
@@ -223,8 +219,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       roleHighlight: "Front-End y Analista de Datos.",
       title: "Oriana Méndez",
       introParagraphs: [
-        "Especialista en React y Next.js con experiencia construyendo aplicaciones web modernas, integraciones de Inteligencia Artificial en tiempo real y paneles de inteligencia de negocios.",
-        "En esta página puedes conocer en detalle mi stack tecnológico, mi trayectoria profesional en empresas e iniciativas independientes, mis proyectos destacados y todas mis certificaciones verificadas.",
+        "Especialista en React y Next.js con más de 4 años de experiencia construyendo aplicaciones web en producción, arquitecturas de Inteligencia Artificial en tiempo real (Python, FastAPI, OpenAI Whisper, n8n, ElevenLabs) y ecosistemas de Business Intelligence en AWS.",
       ],
       primaryCta: "Contactar ahora",
       secondaryCta: "Ver Experiencia",
@@ -249,13 +244,13 @@ export const portfolioData: Record<Language, PortfolioContent> = {
         {
           company: "Momentum Bienes Raíces C.A",
           companyUrl: "https://www.linkedin.com/company/7099844/",
-          totalDuration: "3 años",
+          totalDuration: "2 años 6 meses",
           positions: [
             {
               role: "Data Analyst",
               employmentType: "Jornada parcial",
-              period: "Ene 2024 - Sept 2026",
-              duration: "2 años 9 meses",
+              period: "Ene 2024 - Actualidad",
+              duration: "2 años 3 meses",
               current: true,
               bullets: [
                 "Implementación de paneles de inteligencia de negocios (BI) utilizando Amazon QuickSight para la visualización interactiva de estadísticas, análisis de métricas y generación de proyecciones de datos.",
@@ -273,7 +268,6 @@ export const portfolioData: Record<Language, PortfolioContent> = {
               bullets: [
                 "Desarrollo y mantenimiento de aplicaciones web utilizando React, Next.js y Tailwind CSS. Configurar y mantener una canalización de CI/CD en AWS.",
                 "Diseño e implementación de APIs RESTful utilizando buenas prácticas y estándares de la industria.",
-                "Experiencia con Axios para realizar peticiones HTTP y consumir APIs externas.",
                 "Integración de datos con Prisma para garantizar la consistencia y precisión de los datos.",
                 "Jenkins: Automatización de procesos de integración y despliegue continuo (CI/CD).",
               ],
@@ -282,7 +276,6 @@ export const portfolioData: Record<Language, PortfolioContent> = {
                 { name: "React", icon: "react" },
                 { name: "Tailwind CSS", icon: "tailwind" },
                 { name: "Prisma", icon: "prisma" },
-                { name: "Axios", icon: "axios" },
                 { name: "AWS", icon: "aws" },
                 { name: "Jenkins", icon: "jenkins" },
                 { name: "APIs RESTful", icon: "rest" },
@@ -300,10 +293,8 @@ export const portfolioData: Record<Language, PortfolioContent> = {
               period: "Ene 2025 - Oct 2025",
               duration: "10 meses",
               bullets: [
-                "Interfaz y Gestión de Archivos: Desarrollé la experiencia frontend para la carga de grabaciones de audio largas (hasta 2 horas), visualización del estado de procesamiento, descarga de transcripciones y envío directo de resultados por correo electrónico.",
-                "Transcripción y Resúmenes con IA (OpenAI Whisper y GPT): Integré el flujo de transcripción automática con segmentación inteligente y eliminación de silencios mediante Whisper, junto con la generación de resúmenes ejecutivos usando modelos GPT.",
-                "Procesamiento Asíncrono con Python y FastAPI: Conecté la aplicación con una API modular en FastAPI apoyada en colas de tareas en segundo plano con Celery y Redis para procesar audios extensos sin bloquear la experiencia de usuario.",
-                "Almacenamiento Cloud Automatizado: Gestión y clasificación automática de grabaciones, transcripciones y documentos en buckets de AWS S3 y Google Drive.",
+                "Lideré el desarrollo integral de una plataforma para carga y procesamiento de grabaciones de audio de hasta 2 horas, con seguimiento de estado en tiempo real y envío automatizado de resultados por correo.",
+                "Diseñé e integré el pipeline asíncrono en Python y FastAPI con colas distribuidas en Celery y Redis, conectando OpenAI Whisper (eliminación de silencios y transcripción) y modelos GPT con almacenamiento en AWS S3.",
               ],
               technologies: [
                 { name: "Python", icon: "python" },
@@ -328,10 +319,8 @@ export const portfolioData: Record<Language, PortfolioContent> = {
               period: "Ago 2025 - Oct 2025",
               duration: "3 meses",
               bullets: [
-                "Desarrollo y Arquitectura: Construí el frontend completo de la plataforma de IA para Recursos Humanos utilizando Next.js, gestionando su despliegue y optimización continua a través de Vercel.",
-                "Comunicación en Tiempo Real: Implementé una arquitectura basada en WebSockets para recibir datos y eventos instantáneos desde flujos de automatización de n8n directamente en el frontend.",
-                "Integración de Inteligencia Artificial: Configuré e integré la API de ElevenLabs para habilitar la síntesis y modulación de interacciones de voz dinámicas en la aplicación.",
-                "Orquestación de Datos: Diseñé la conexión entre la lógica del backend, los flujos de n8n y la interfaz de usuario, garantizando una sincronización de datos estable y fluida.",
+                "Desarrollé la arquitectura frontend en Next.js (desplegada en Vercel) para una plataforma de evaluación de talento asistida por agentes de Inteligencia Artificial.",
+                "Implementé sincronización en tiempo real mediante WebSockets bidireccionales conectados a flujos de n8n e integré la API de ElevenLabs para síntesis de voz conversacional dinámica.",
               ],
               technologies: [
                 { name: "Next.js", icon: "nextjs" },
@@ -369,34 +358,67 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       ],
     },
     projects: {
-      title: "Proyectos Destacados",
+      title: "Proyectos Destacados y Arquitectura",
       description:
-        "Soluciones reales que he construido integrando interfaces modernas, flujos de automatización con Inteligencia Artificial y arquitecturas en la nube.",
-      upcomingNote: "Próximamente agregaremos más proyectos al portafolio.",
+        "Casos de estudio técnicos de sistemas que he diseñado y llevado a producción, combinando interfaces en React/Next.js, procesamiento asíncrono con IA y analítica cloud.",
+      upcomingNote: "",
       liveBadge: "Producción",
       visitDemo: "Ver Detalles",
       viewCode: "Repositorio",
       items: [
         {
+          id: "ai-audio-transcription",
+          title: "Plataforma de Transcripción Asíncrona y Resumen Ejecutivo con IA",
+          period: "2025",
+          category: "PYTHON · FASTAPI · OPENAI WHISPER & GPT",
+          live: true,
+          description:
+            "Sistema full-stack para el procesamiento no bloqueante de grabaciones de audio de larga duración (hasta 2 horas), con eliminación inteligente de silencios, transcripción automatizada y generación de actas ejecutivas.",
+          highlights: [
+            {
+              label: "Pipeline Asíncrono",
+              value: "Colas distribuidas con FastAPI, Celery y Redis para procesar audios pesados en segundo plano con seguimiento de estado en vivo.",
+            },
+            {
+              label: "Modelos de IA",
+              value: "Segmentación de audio y transcripción de alta precisión con OpenAI Whisper + síntesis estructurada con modelos GPT.",
+            },
+            {
+              label: "Almacenamiento Cloud",
+              value: "Clasificación automatizada en AWS S3 y Google Drive con entrega directa de reportes por correo electrónico.",
+            },
+          ],
+          technologies: [
+            { name: "Python", icon: "python" },
+            { name: "FastAPI", icon: "fastapi" },
+            { name: "OpenAI (Whisper / GPT)", icon: "ai" },
+            { name: "Celery", icon: "celery" },
+            { name: "Redis", icon: "redis" },
+            { name: "AWS S3", icon: "aws" },
+            { name: "Docker", icon: "docker" },
+            { name: "Next.js", icon: "nextjs" },
+          ],
+        },
+        {
           id: "ai-hr-platform",
           title: "Plataforma de IA y Voz en Tiempo Real para Recursos Humanos",
           period: "2025",
-          category: "APLICACIÓN WEB CON IA Y TIEMPO REAL",
+          category: "NEXT.JS · WEBSOCKETS · ELEVENLABS & N8N",
           live: true,
           description:
-            "Aplicación web interactiva para procesos de Recursos Humanos impulsada por agentes de Inteligencia Artificial, síntesis de voz dinámica y sincronización de eventos en tiempo real.",
+            "Aplicación web interactiva para procesos de evaluación en Recursos Humanos impulsada por flujos de agentes de IA, síntesis de voz conversacional de baja latencia y sincronización de eventos en vivo.",
           highlights: [
             {
-              label: "Frontend y Nube",
-              value: "Arquitectura en Next.js desplegada y optimizada en Vercel",
+              label: "Streaming de Eventos",
+              value: "Arquitectura WebSockets bidireccional que sincroniza el estado de la entrevista entre n8n y la interfaz en milisegundos.",
             },
             {
-              label: "Tiempo Real",
-              value: "WebSockets bidireccionales conectados con flujos de n8n",
+              label: "Síntesis Vocal Dinámica",
+              value: "Integración de ElevenLabs API con modulación de voz natural y feedback visual reactivo en el cliente.",
             },
             {
-              label: "Síntesis de Voz",
-              value: "Integración de ElevenLabs API para respuestas de voz naturales",
+              label: "Frontend y Despliegue",
+              value: "Interfaz construida en Next.js App Router desplegada y optimizada sobre infraestructura edge en Vercel.",
             },
           ],
           technologies: [
@@ -409,24 +431,24 @@ export const portfolioData: Record<Language, PortfolioContent> = {
         },
         {
           id: "momentum-platform-bi",
-          title: "Ecosistema Web Inmobiliario y Paneles de Inteligencia de Negocios",
+          title: "Ecosistema Web Inmobiliario y Analítica Ejecutiva en AWS",
           period: "2023 - 2026",
-          category: "DESARROLLO FULL-STACK Y BI",
+          category: "REACT · PRISMA · AMAZON QUICKSIGHT",
           live: true,
           description:
-            "Desarrollo de aplicaciones web inmobiliarias de alto rendimiento, integración de datos con Prisma y APIs RESTful, y tableros ejecutivos de proyecciones en AWS.",
+            "Plataforma web operativa y suite de inteligencia de negocios para el sector inmobiliario, unificando captura transaccional con tableros predictivos de ventas y rendimiento comercial.",
           highlights: [
             {
-              label: "Arquitectura Web",
-              value: "Aplicaciones en React, Next.js y Tailwind CSS con Prisma ORM",
+              label: "Arquitectura de Datos y Web",
+              value: "Aplicaciones modulares en React, Next.js y Tailwind CSS conectadas mediante Prisma ORM y APIs RESTful.",
             },
             {
-              label: "Inteligencia de Negocios",
-              value: "Paneles interactivos de métricas y proyecciones en Amazon QuickSight",
+              label: "Business Intelligence",
+              value: "Paneles interactivos en Amazon QuickSight para proyecciones financieras, embudos comerciales y KPIs en tiempo real.",
             },
             {
               label: "Automatización CI/CD",
-              value: "Canalizaciones de integración y despliegue continuo con AWS y Jenkins",
+              value: "Pipelines de integración y despliegue continuo automatizados con Jenkins y servicios cloud de AWS.",
             },
           ],
           technologies: [
@@ -436,6 +458,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
             { name: "Prisma", icon: "prisma" },
             { name: "Amazon QuickSight", icon: "quicksight" },
             { name: "AWS", icon: "aws" },
+            { name: "Jenkins", icon: "jenkins" },
           ],
         },
       ],
@@ -696,7 +719,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       role: "Front-End Developer and Data Analyst",
       email: "orianamendez.work@gmail.com",
       linkedinUrl: "https://www.linkedin.com/in/oriana-mendez-ma/",
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/OrianaMendez",
       platziUrl: "https://platzi.com/p/or1ana/",
     },
     nav: {
@@ -706,7 +729,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       projects: "Projects",
       certifications: "Certifications",
       contact: "Contact",
-      cmdHint: "Command",
+      cmdHint: "Command (Ctrl+K)",
     },
     hero: {
       availableBadge: "Available for projects",
@@ -715,8 +738,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       roleHighlight: "Front-End Developer and Data Analyst.",
       title: "Oriana Méndez",
       introParagraphs: [
-        "React and Next.js specialist experienced in building modern web applications, real-time AI workflow integrations, and interactive Business Intelligence dashboards.",
-        "On this page, you can learn more about my knowledge stack, my previous work history across companies and independent initiatives, featured projects, and all my verified certifications.",
+        "React and Next.js specialist with 4+ years of experience building production web applications, real-time AI architectures (Python, FastAPI, OpenAI Whisper, n8n, ElevenLabs), and Business Intelligence ecosystems on AWS.",
       ],
       primaryCta: "Get in touch",
       secondaryCta: "View Work History",
@@ -741,13 +763,13 @@ export const portfolioData: Record<Language, PortfolioContent> = {
         {
           company: "Momentum Bienes Raíces C.A",
           companyUrl: "https://www.linkedin.com/company/7099844/",
-          totalDuration: "3 yrs",
+          totalDuration: "2 yrs 6 mos",
           positions: [
             {
               role: "Data Analyst",
               employmentType: "Part-Time",
-              period: "Jan 2024 - Sep 2026",
-              duration: "2 yrs 9 mos",
+              period: "Jan 2024 - Present",
+              duration: "2 yrs 3 mos",
               current: true,
               bullets: [
                 "Implemented Business Intelligence (BI) dashboards using Amazon QuickSight for interactive statistical visualization, metric analysis, and data forecasting.",
@@ -765,7 +787,6 @@ export const portfolioData: Record<Language, PortfolioContent> = {
               bullets: [
                 "Developed and maintained web applications using React, Next.js, and Tailwind CSS. Configured and maintained CI/CD pipelines on AWS.",
                 "Designed and implemented RESTful APIs following industry best practices and standards.",
-                "Leveraged Axios for HTTP requests and external API consumption.",
                 "Integrated data layers with Prisma ORM to ensure data consistency and accuracy.",
                 "Jenkins: Automated continuous integration and deployment (CI/CD) workflows.",
               ],
@@ -774,7 +795,6 @@ export const portfolioData: Record<Language, PortfolioContent> = {
                 { name: "React", icon: "react" },
                 { name: "Tailwind CSS", icon: "tailwind" },
                 { name: "Prisma", icon: "prisma" },
-                { name: "Axios", icon: "axios" },
                 { name: "AWS", icon: "aws" },
                 { name: "Jenkins", icon: "jenkins" },
                 { name: "RESTful APIs", icon: "rest" },
@@ -792,10 +812,8 @@ export const portfolioData: Record<Language, PortfolioContent> = {
               period: "Jan 2025 - Oct 2025",
               duration: "10 mos",
               bullets: [
-                "Frontend Interface and File Management: Built the frontend workflow for uploading long audio recordings (up to 2 hours), tracking real-time processing status, downloading transcripts, and sending results directly via email.",
-                "AI Transcription and Summarization (OpenAI Whisper and GPT): Integrated automated voice-to-text transcription with silence removal and smart audio segmentation using Whisper, paired with GPT-powered executive summaries.",
-                "Asynchronous Processing with Python and FastAPI: Connected the platform with a modular FastAPI backend using Celery and Redis background task queues to process heavy audio files smoothly.",
-                "Automated Cloud Storage: Implemented automatic organization and storage of audio recordings, transcripts, and documents across AWS S3 buckets and Google Drive.",
+                "Led end-to-end development of a web platform for uploading and processing long-form audio recordings (up to 2 hours) with live status tracking and automated email delivery.",
+                "Architected the asynchronous Python and FastAPI pipeline using Celery and Redis task queues, integrating OpenAI Whisper (silence removal and transcription), GPT summaries, and AWS S3 storage.",
               ],
               technologies: [
                 { name: "Python", icon: "python" },
@@ -820,10 +838,8 @@ export const portfolioData: Record<Language, PortfolioContent> = {
               period: "Aug 2025 - Oct 2025",
               duration: "3 mos",
               bullets: [
-                "Development and Architecture: Built the complete frontend for an AI-powered HR platform using Next.js, managing continuous deployment and optimization on Vercel.",
-                "Real-Time Communication: Implemented a WebSockets architecture to receive instant data and events from n8n automation workflows directly in the frontend.",
-                "Artificial Intelligence Integration: Configured and integrated the ElevenLabs API to enable dynamic voice synthesis and modulation interactions.",
-                "Data Orchestration: Designed the bridge between backend logic, n8n workflows, and the UI, ensuring stable and seamless data synchronization.",
+                "Built the Next.js frontend architecture (deployed on Vercel) for an AI-assisted talent evaluation platform.",
+                "Implemented bi-directional WebSockets synchronization with n8n automation workflows and integrated the ElevenLabs API for dynamic conversational voice synthesis.",
               ],
               technologies: [
                 { name: "Next.js", icon: "nextjs" },
@@ -861,34 +877,67 @@ export const portfolioData: Record<Language, PortfolioContent> = {
       ],
     },
     projects: {
-      title: "Featured Projects",
+      title: "Featured Projects & Architecture",
       description:
-        "Real-world applications and systems I've built combining modern interfaces, AI automation workflows, and cloud architectures.",
-      upcomingNote: "More projects will be added to this showcase soon.",
+        "Technical case studies of systems I've architected and shipped to production, combining React/Next.js interfaces, asynchronous AI pipelines, and cloud analytics.",
+      upcomingNote: "",
       liveBadge: "Production",
       visitDemo: "View Details",
       viewCode: "Source",
       items: [
         {
+          id: "ai-audio-transcription",
+          title: "Asynchronous AI Audio Transcription & Executive Summary Platform",
+          period: "2025",
+          category: "PYTHON · FASTAPI · OPENAI WHISPER & GPT",
+          live: true,
+          description:
+            "Full-stack system for non-blocking processing of long-form audio recordings (up to 2 hours), featuring smart silence removal, automated transcription, and executive summary generation.",
+          highlights: [
+            {
+              label: "Async Task Pipeline",
+              value: "Distributed task queues with FastAPI, Celery, and Redis to process heavy audio in the background with live status tracking.",
+            },
+            {
+              label: "AI Models",
+              value: "Smart audio segmentation and high-accuracy transcription via OpenAI Whisper paired with GPT executive summaries.",
+            },
+            {
+              label: "Cloud Storage",
+              value: "Automated bucket classification in AWS S3 and Google Drive with direct email report delivery.",
+            },
+          ],
+          technologies: [
+            { name: "Python", icon: "python" },
+            { name: "FastAPI", icon: "fastapi" },
+            { name: "OpenAI (Whisper / GPT)", icon: "ai" },
+            { name: "Celery", icon: "celery" },
+            { name: "Redis", icon: "redis" },
+            { name: "AWS S3", icon: "aws" },
+            { name: "Docker", icon: "docker" },
+            { name: "Next.js", icon: "nextjs" },
+          ],
+        },
+        {
           id: "ai-hr-platform",
           title: "AI and Real-Time Voice HR Platform",
           period: "2025",
-          category: "AI AND REAL-TIME WEB APP",
+          category: "NEXT.JS · WEBSOCKETS · ELEVENLABS & N8N",
           live: true,
           description:
-            "Interactive Human Resources web application powered by AI workflows, dynamic voice synthesis, and real-time event synchronization.",
+            "Interactive Human Resources assessment web application powered by AI agent workflows, low-latency conversational voice synthesis, and live event synchronization.",
           highlights: [
             {
-              label: "Frontend and Cloud",
-              value: "Next.js architecture deployed and optimized on Vercel",
+              label: "Event Streaming",
+              value: "Bi-directional WebSockets architecture synchronizing interview state between n8n and the client in milliseconds.",
             },
             {
-              label: "Real-Time Events",
-              value: "Bi-directional WebSockets connected to n8n workflows",
+              label: "Dynamic Voice Synthesis",
+              value: "ElevenLabs API integration with natural voice modulation and reactive visual feedback.",
             },
             {
-              label: "Voice Synthesis",
-              value: "ElevenLabs API integration for natural voice interactions",
+              label: "Frontend & Edge Deployment",
+              value: "Next.js App Router interface deployed and optimized on Vercel edge infrastructure.",
             },
           ],
           technologies: [
@@ -901,24 +950,24 @@ export const portfolioData: Record<Language, PortfolioContent> = {
         },
         {
           id: "momentum-platform-bi",
-          title: "Real Estate Web Ecosystem and BI Analytics",
+          title: "Real Estate Web Ecosystem & Executive BI on AWS",
           period: "2023 - 2026",
-          category: "FULL-STACK AND BI ANALYTICS",
+          category: "REACT · PRISMA · AMAZON QUICKSIGHT",
           live: true,
           description:
-            "High-performance real estate web applications, Prisma/REST API data integrations, and executive forecasting dashboards on AWS.",
+            "Operational web platform and Business Intelligence suite for the real estate sector, unifying transactional data capture with predictive sales and commercial performance dashboards.",
           highlights: [
             {
-              label: "Web Architecture",
-              value: "React, Next.js, and Tailwind CSS apps with Prisma ORM",
+              label: "Web & Data Architecture",
+              value: "Modular React, Next.js, and Tailwind CSS applications connected via Prisma ORM and RESTful APIs.",
             },
             {
               label: "Business Intelligence",
-              value: "Interactive metric and forecasting dashboards in Amazon QuickSight",
+              value: "Interactive Amazon QuickSight dashboards for financial forecasting, commercial funnels, and real-time KPIs.",
             },
             {
-              label: "DevOps CI/CD",
-              value: "Automated integration and deployment pipelines with AWS and Jenkins",
+              label: "CI/CD Automation",
+              value: "Automated continuous integration and deployment pipelines with Jenkins and AWS cloud services.",
             },
           ],
           technologies: [
@@ -928,6 +977,7 @@ export const portfolioData: Record<Language, PortfolioContent> = {
             { name: "Prisma", icon: "prisma" },
             { name: "Amazon QuickSight", icon: "quicksight" },
             { name: "AWS", icon: "aws" },
+            { name: "Jenkins", icon: "jenkins" },
           ],
         },
       ],

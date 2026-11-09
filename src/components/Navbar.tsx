@@ -106,16 +106,16 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full pt-3 sm:pt-4 px-4 sm:px-6 pointer-events-none">
       <div
-        className={`max-w-4xl mx-auto pointer-events-auto rounded-full px-3 sm:px-5 h-12 sm:h-14 flex items-center justify-between gap-2 sm:gap-4 backdrop-blur-xl bg-white/90 dark:bg-[#131c2e]/90 border transition-all duration-300 ${
+        className={`max-w-5xl mx-auto pointer-events-auto rounded-full px-3 sm:px-4 h-12 sm:h-14 flex items-center justify-between gap-2 backdrop-blur-xl bg-[var(--bg-card)]/90 border border-[var(--border-card)] transition-all duration-300 ${
           scrolled
-            ? "border-slate-300/90 dark:border-slate-700/80 shadow-[0_8px_30px_rgb(15,23,42,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.45)]"
-            : "border-slate-200/80 dark:border-slate-800/80 shadow-xs"
+            ? "shadow-[0_8px_30px_rgb(15,23,42,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] border-[var(--border-card-strong)]"
+            : "shadow-xs"
         }`}
       >
         {/* Desktop Navigation Links with Smooth Gliding Pill */}
         <nav
           ref={navContainerRef}
-          className="relative hidden md:flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider shrink-0"
+          className="relative hidden md:flex items-center gap-0.5 text-xs font-semibold uppercase tracking-wider shrink-0"
         >
           {/* Single Sliding Pill Indicator */}
           <span
@@ -138,7 +138,7 @@ export function Navbar() {
                 }}
                 href={item.href}
                 onClick={() => handleNavClick(item.id)}
-                className={`relative z-10 px-3 py-1.5 rounded-full transition-colors duration-200 whitespace-nowrap ${
+                className={`relative z-10 px-2.5 lg:px-3 py-1.5 rounded-full transition-colors duration-200 whitespace-nowrap ${
                   isActive
                     ? "accent-text font-bold"
                     : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
@@ -156,7 +156,8 @@ export function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label="Abrir menú de navegación"
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full accent-pill text-[11px] font-bold uppercase tracking-wider cursor-pointer"
+            aria-expanded={mobileMenuOpen}
+            className="inline-flex items-center gap-2 min-h-9 px-3.5 py-1.5 rounded-full accent-pill text-xs font-bold uppercase tracking-wider cursor-pointer"
           >
             {mobileMenuOpen ? (
               <svg
@@ -197,19 +198,20 @@ export function Navbar() {
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-2 shrink-0 ml-auto">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 ml-auto">
           <span className="hidden md:block h-4 w-px bg-slate-200 dark:bg-slate-800 mr-0.5" />
 
           {/* Command Palette Trigger (Ctrl+K) */}
           <button
             type="button"
             onClick={() => setIsCmdOpen(true)}
+            aria-label={t.nav.cmdHint}
             title="Ctrl+K / ⌘K"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full surface-badge text-[11px] font-medium text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 min-h-9 min-w-9 px-2.5 py-1 rounded-full surface-badge text-xs font-medium text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
           >
             <svg
               viewBox="0 0 24 24"
-              className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400"
+              className="w-3.5 h-3.5 text-slate-600 dark:text-slate-300"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -217,7 +219,7 @@ export function Navbar() {
               <circle cx="11" cy="11" r="8" />
               <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
             </svg>
-            <kbd className="hidden sm:inline text-[10px] font-mono text-slate-500 dark:text-slate-400">
+            <kbd className="hidden sm:inline text-xs font-mono text-slate-600 dark:text-slate-300">
               ⌘K
             </kbd>
           </button>
@@ -227,23 +229,23 @@ export function Navbar() {
             type="button"
             onClick={toggleLang}
             aria-label="Cambiar idioma ES / EN"
-            className="px-2.5 py-1 rounded-full surface-badge text-[11px] font-bold tracking-wider transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center min-h-9 px-2.5 py-1 rounded-full surface-badge text-xs font-bold tracking-wider transition-colors cursor-pointer"
           >
             <span
               className={
                 lang === "es"
                   ? "accent-text"
-                  : "text-slate-400 dark:text-slate-500"
+                  : "text-slate-600 dark:text-slate-300"
               }
             >
               ES
             </span>
-            <span className="mx-1 text-slate-300 dark:text-slate-700">/</span>
+            <span className="mx-1 text-slate-400 dark:text-slate-600">/</span>
             <span
               className={
                 lang === "en"
                   ? "accent-text"
-                  : "text-slate-400 dark:text-slate-500"
+                  : "text-slate-600 dark:text-slate-300"
               }
             >
               EN
@@ -257,7 +259,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
             title="LinkedIn"
-            className="p-1.5 rounded-full text-slate-600 dark:text-slate-300 accent-hover-text transition-colors"
+            className="inline-flex items-center justify-center min-h-9 min-w-9 p-2 rounded-full text-slate-600 dark:text-slate-300 accent-hover-text transition-colors"
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
               <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
@@ -270,31 +272,41 @@ export function Navbar() {
             onClick={toggleTheme}
             aria-label="Cambiar modo Claro / Oscuro"
             title={theme === "dark" ? "Modo Claro" : "Modo Oscuro"}
-            className="p-1.5 rounded-full text-slate-700 dark:text-slate-200 accent-hover-text transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center min-h-9 min-w-9 p-2 rounded-full text-slate-700 dark:text-slate-200 accent-hover-text transition-colors cursor-pointer"
           >
-            <svg
-              viewBox="0 0 24 24"
-              className={`w-4 h-4 transition-transform duration-300 ${
-                theme === "light" ? "rotate-180" : ""
-              }`}
-              fill="none"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="9"
+            {theme === "dark" ? (
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4"
+                fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-              />
-              <path d="M12 3a9 9 0 0 0 0 18V3z" fill="currentColor" />
-            </svg>
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
 
       {/* Responsive Mobile Navigation Popover */}
       {mobileMenuOpen && (
-        <div className="md:hidden max-w-4xl mx-auto mt-2 pointer-events-auto rounded-2xl bg-white/95 dark:bg-[#131c2e]/95 backdrop-blur-xl border border-slate-300 dark:border-slate-700 px-4 py-3.5 shadow-xl">
+        <div className="md:hidden max-w-4xl mx-auto mt-2 pointer-events-auto rounded-2xl bg-[var(--bg-card)]/95 backdrop-blur-xl border border-[var(--border-card-strong)] px-4 py-3.5 shadow-xl">
           <div className="grid grid-cols-2 gap-2">
             {navLinks.map((item) => {
               const isActive = activeSection === item.id;

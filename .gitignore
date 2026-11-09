@@ -37,3 +37,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent skills & local audit artifacts
+/.agents/
+/.agent/
+/.claude/
+/.cursor/
+/.codex/
+/.taste-skill/
+/.impeccable/
+/shots/
+/skills-lock.json

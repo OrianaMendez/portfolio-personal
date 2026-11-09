@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useApp } from "@/context/AppContext";
 
 interface CmdItem {
@@ -16,6 +16,8 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [copiedFeedback, setCopiedFeedback] = useState(false);
+  const gChordRef = useRef<boolean>(false);
+  const gTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const closeAndRun = (fn: () => void) => {
     setIsCmdOpen(false);
@@ -117,6 +119,65 @@ export function CommandPalette() {
     [t, copiedFeedback, toggleTheme, toggleLang]
   );
 
+  // Global keyboard shortcuts (T, L, C, and G + R/S/E/P/C/M when not typing in an input)
+  useEffect(() => {
+    const handleGlobalShortcuts = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const target = e.target as HTMLElement | null;
+      const isTyping =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable);
+
+      if (isTyping) return;
+
+      const key = e.key.toLowerCase();
+
+      if (gChordRef.current) {
+        gChordRef.current = false;
+        if (gTimeoutRef.current) clearTimeout(gTimeoutRef.current);
+        const sectionMap: Record<string, string> = {
+          r: "resume",
+          s: "skills",
+          e: "experience",
+          p: "projects",
+          c: "certifications",
+          m: "contact",
+        };
+        if (sectionMap[key]) {
+          e.preventDefault();
+          scrollToSection(sectionMap[key]);
+          setIsCmdOpen(false);
+          return;
+        }
+      }
+
+      if (key === "g") {
+        gChordRef.current = true;
+        if (gTimeoutRef.current) clearTimeout(gTimeoutRef.current);
+        gTimeoutRef.current = setTimeout(() => {
+          gChordRef.current = false;
+        }, 900);
+        return;
+      }
+
+      if (key === "t") {
+        e.preventDefault();
+        toggleTheme();
+      } else if (key === "l") {
+        e.preventDefault();
+        toggleLang();
+      } else if (key === "c") {
+        e.preventDefault();
+        navigator.clipboard?.writeText(t.meta.email);
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalShortcuts);
+    return () => window.removeEventListener("keydown", handleGlobalShortcuts);
+  }, [toggleTheme, toggleLang, t.meta.email, setIsCmdOpen]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return commands;
@@ -156,18 +217,21 @@ export function CommandPalette() {
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={t.commandPalette.placeholder}
       className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 px-4 bg-black/60 backdrop-blur-xs"
       onClick={() => setIsCmdOpen(false)}
     >
       <div
-        className="w-full max-w-lg rounded-xl bg-white dark:bg-[#111927] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden"
+        className="w-full max-w-lg rounded-xl surface-card overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-slate-200 dark:border-slate-800">
           <svg
             viewBox="0 0 24 24"
-            className="w-4 h-4 text-slate-400 shrink-0"
+            className="w-4 h-4 text-slate-600 dark:text-slate-300 shrink-0"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -181,12 +245,21 @@ export function CommandPalette() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t.commandPalette.placeholder}
-            className="w-full bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none"
+            className="w-full bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-600 dark:placeholder:text-slate-300 focus:outline-none"
           />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              className="px-2 py-0.5 text-xs font-medium rounded surface-badge text-slate-700 dark:text-slate-300 cursor-pointer"
+            >
+              ×
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setIsCmdOpen(false)}
-            className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-pointer"
+            className="px-2 py-0.5 text-xs font-mono rounded surface-badge text-slate-700 dark:text-slate-300 cursor-pointer"
           >
             ESC
           </button>
@@ -195,7 +268,7 @@ export function CommandPalette() {
         {/* Command List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filtered.length === 0 ? (
-            <p className="py-8 text-center text-xs text-slate-400">
+            <p className="py-8 text-center text-xs text-slate-600 dark:text-slate-300">
               {t.commandPalette.noResults}
             </p>
           ) : (
@@ -214,15 +287,15 @@ export function CommandPalette() {
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                    <span className="text-xs font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                       {item.group}
                     </span>
                     <span>{item.label}</span>
                   </div>
                   {item.shortcut && (
-                    <span className="text-[10px] font-mono text-slate-400">
+                    <kbd className="text-xs font-mono text-slate-600 dark:text-slate-300">
                       {item.shortcut}
-                    </span>
+                    </kbd>
                   )}
                 </button>
               );

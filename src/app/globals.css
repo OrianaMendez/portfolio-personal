@@ -2,44 +2,75 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 :root {
   color-scheme: light;
-  /* Light mode: Soft pearl/alabaster canvas so pure white elevated cards pop with 3D depth */
-  --bg-primary: #f6f8fb;
-  --bg-card: #ffffff;
-  --bg-card-hover: #ffffff;
-  --bg-badge: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --border-card: #e2e8f0;
-  --border-card-strong: #cbd5e1;
+  /* Light mode: Warm Editorial Ivory & Author Cobalt Blue in OKLCH */
+  --bg-primary: oklch(0.978 0.012 85);
+  --bg-card: oklch(0.998 0.003 85);
+  --bg-card-hover: oklch(0.992 0.006 85);
+  --bg-badge: oklch(0.998 0.003 85);
+  --text-primary: oklch(0.20 0.022 260);
+  --text-secondary: oklch(0.38 0.024 255);
+  --text-muted: oklch(0.55 0.020 255);
+  --border-card: oklch(0.91 0.012 85);
+  --border-card-strong: oklch(0.84 0.015 85);
 
-  /* Defined Accent: Sky Blue (#0284c7 in Light / #38bdf8 in Dark) */
-  --accent-light: #0284c7;
-  --accent-dark: #38bdf8;
-  --accent-glow: rgba(56, 189, 248, 0.55);
-  --accent-soft: rgba(2, 132, 199, 0.11);
-  --accent-border: rgba(2, 132, 199, 0.42);
+  /* Primary Accent: Warm Cobalt Blue (Author palette) */
+  --accent-light: oklch(0.48 0.22 258);
+  --accent-dark: oklch(0.72 0.18 250);
+  --accent-glow: rgba(37, 99, 235, 0.45);
+  --accent-soft: oklch(0.48 0.22 258 / 0.10);
+  --accent-border: oklch(0.48 0.22 258 / 0.35);
   --accent: var(--accent-light);
+
+  /* Semantic Domain Tokens unified in Author Cobalt Blue */
+  --accent-sky: var(--accent);
+  --accent-sky-soft: var(--accent-soft);
+  --accent-sky-border: var(--accent-border);
+
+  --accent-ai: var(--accent);
+  --accent-ai-soft: var(--accent-soft);
+  --accent-ai-border: var(--accent-border);
+
+  --accent-data: var(--accent);
+  --accent-data-soft: var(--accent-soft);
+  --accent-data-border: var(--accent-border);
 }
 
 html.dark,
 .dark {
   color-scheme: dark;
-  /* Dark mode: exact deep navy from reference with clearly differentiated dark cards */
-  --bg-primary: #0b111e;
-  --bg-card: #131c2e;
-  --bg-card-hover: #172238;
-  --bg-badge: #131c2e;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --border-card: #1e293b;
-  --border-card-strong: #334155;
-  --accent-soft: rgba(56, 189, 248, 0.14);
-  --accent-border: rgba(56, 189, 248, 0.45);
+  /* Dark mode: Deep Warm Obsidian / Ink & Electric Cobalt Sapphire in OKLCH */
+  --bg-primary: oklch(0.14 0.020 260);
+  --bg-card: oklch(0.18 0.024 260);
+  --bg-card-hover: oklch(0.22 0.028 260);
+  --bg-badge: oklch(0.18 0.024 260);
+  --text-primary: oklch(0.97 0.008 85);
+  --text-secondary: oklch(0.83 0.015 255);
+  --text-muted: oklch(0.66 0.020 255);
+  --border-card: oklch(0.26 0.025 260);
+  --border-card-strong: oklch(0.34 0.030 260);
+  --accent-soft: oklch(0.72 0.18 250 / 0.15);
+  --accent-border: oklch(0.72 0.18 250 / 0.42);
   --accent: var(--accent-dark);
+
+  /* Semantic Domain Tokens (Dark OKLCH unified in Electric Cobalt) */
+  --accent-sky: var(--accent);
+  --accent-sky-soft: var(--accent-soft);
+  --accent-sky-border: var(--accent-border);
+
+  --accent-ai: var(--accent);
+  --accent-ai-soft: var(--accent-soft);
+  --accent-ai-border: var(--accent-border);
+
+  --accent-data: var(--accent);
+  --accent-data-soft: var(--accent-soft);
+  --accent-data-border: var(--accent-border);
 }
 
 html {
@@ -62,7 +93,7 @@ body {
   z-index: -1;
   pointer-events: none;
   background-image: radial-gradient(
-    rgba(15, 23, 42, 0.13) 1.15px,
+    oklch(0.20 0.022 260 / 0.09) 1.15px,
     transparent 1.15px
   );
   background-size: 22px 22px;
@@ -80,7 +111,7 @@ body {
 
 .dark .canvas-backdrop {
   background-image: radial-gradient(
-    rgba(148, 163, 184, 0.1) 1px,
+    oklch(0.85 0.020 260 / 0.08) 1px,
     transparent 1px
   );
 }
@@ -104,9 +135,54 @@ body {
   border: 1px solid var(--accent-border);
 }
 
+/* Domain Accent Utilities */
+.accent-sky-text { color: var(--accent-sky); }
+.accent-sky-pill {
+  background-color: var(--accent-sky-soft);
+  color: var(--accent-sky);
+  border: 1px solid var(--accent-sky-border);
+}
+
+.accent-ai-text { color: var(--accent-ai); }
+.accent-ai-pill {
+  background-color: var(--accent-ai-soft);
+  color: var(--accent-ai);
+  border: 1px solid var(--accent-ai-border);
+}
+
+.accent-data-text { color: var(--accent-data); }
+.accent-data-pill {
+  background-color: var(--accent-data-soft);
+  color: var(--accent-data);
+  border: 1px solid var(--accent-data-border);
+}
+
+/* Voice Equalizer Bar Animations */
+@keyframes voiceWave1 {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+@keyframes voiceWave2 {
+  0%, 100% { height: 12px; }
+  50% { height: 6px; }
+}
+@keyframes voiceWave3 {
+  0%, 100% { height: 6px; }
+  50% { height: 22px; }
+}
+@keyframes voiceWave4 {
+  0%, 100% { height: 16px; }
+  50% { height: 8px; }
+}
+
+.animate-wave-1 { animation: voiceWave1 0.75s ease-in-out infinite; }
+.animate-wave-2 { animation: voiceWave2 0.65s ease-in-out infinite 0.15s; }
+.animate-wave-3 { animation: voiceWave3 0.85s ease-in-out infinite 0.3s; }
+.animate-wave-4 { animation: voiceWave4 0.7s ease-in-out infinite 0.2s; }
+
 .accent-node {
   background-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft), 0 0 12px var(--accent-glow);
+  box-shadow: 0 0 0 4px var(--accent-soft), 0 2px 6px rgba(2, 132, 199, 0.35);
 }
 
 .accent-marker li::marker {
@@ -174,4 +250,24 @@ a.surface-badge:hover {
 .uses-link:hover {
   color: var(--accent);
   text-decoration-color: var(--accent);
+}
+
+/* Keyboard focus ring & reduced-motion accessibility (taste-skill rules) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
